@@ -142,13 +142,16 @@ public class JH_Player : MonoBehaviour
         {
             if (jumpCount > 0)
             {
-                if (Input.GetKeyDown(KeyCode.Z)) // 점프키가 눌리면
+                // 점프키가 눌리면
+                if (Input.GetKeyDown(KeyCode.Z))
                 {
                     isJump = true;
                     anim.SetTrigger("doJump");
                     jumpSound.Play();
-                    rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); //위방향으로 올라가게함
-                    jumpCount--;    //점프할때 마다 점프횟수 감소
+                    // 윗 방향으로 힘 가함
+                    rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                    //점프할 때 마다 점프횟수 감소 -> 더블 점프
+                    jumpCount--;
                 }
             }
         }
@@ -222,54 +225,14 @@ public class JH_Player : MonoBehaviour
     }
 
 
-    //// 하울링 공격이 일정거리 안에 들어오면 플레이어가 움직이지 못하도록 하고 싶다.
-    //// 하울링 공격을 받으면 플레이어 Run, Jump, Attack 할 수 없다.
-    //public float screamDist = 5f;
-    //float distance;
-    //bool isScreamDamage = false;
-    //float time = 0;
-    //float stopTime = 1f;
-    //private void ScreamDamage()
-    //{
-    //    // 하울링이 필요하다.
-    //    GameObject scream = GameObject.Find("Scream");
-
-    //    //// 하울링 공격이 있다면
-    //    //if (scream)
-    //    //{
-    //    //    // 하울링과 플레이어의 거리를 계산한다.
-    //    //    distance = Vector3.Distance(scream.transform.position, transform.position);
-
-    //    //    // 하울링과의 거리가 일정 거리보다 작으면
-    //    //    if(distance <= screamDist)
-    //    //    {
-    //    //        // 하울링 데미지 상태 true
-    //    //        isScreamDamage = true;
-    //    //    }
-    //    //    else
-    //    //    {
-    //    //        // 하울링 데미지 상태 false
-    //    //        isScreamDamage = false;
-    //    //    }
-    //    //}
-    //    if (isScreamDamage)
-    //    {
-    //        time += Time.deltaTime;
-
-    //        if(time > stopTime)
-    //        {
-    //            isScreamDamage = false;
-    //        }
-    //    }
-    //}
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name.Contains("Ground") || collision.gameObject.layer == 10)
         {
             isJump = false;
             isGrounded = true;
-            jumpCount = 2;          //Ground에 닿으면 점프횟수가 2로 초기화됨
+            //Ground에 닿으면 점프횟수가 2로 초기화됨
+            jumpCount = 2;
         }
 
         

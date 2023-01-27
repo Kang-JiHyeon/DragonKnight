@@ -28,10 +28,6 @@ public class JH_HitManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // 태어날 때 imageHit, imageGameOver, textGameOver를 보이지 않도록 한다.
-        //imageHit.SetActive(false);
-        //imageGameOver.SetActive(false);
-        //textGameOver.SetActive(false);
         imageBlack.gameObject.SetActive(false);
     }
 
@@ -63,16 +59,6 @@ public class JH_HitManager : MonoBehaviour
         JH_SceneManager.Instance.GameOver();
     }
 
-    //// Game Over 코루틴 함수
-    //IEnumerator ShowGameOverUI()
-    //{
-    //    // Game Over 배경 활성화
-    //    imageGameOver.SetActive(true);
-    //    // 1초 sleep
-    //    yield return new WaitForSeconds(1.0f);
-    //    // Game Over 텍스트 활성화
-    //    textGameOver.SetActive(true);
-    //}
 
     // Update is called once per frame
     void Update()

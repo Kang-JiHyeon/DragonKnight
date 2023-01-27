@@ -48,8 +48,8 @@ public class JH_PlayerAttack : MonoBehaviour
 
             if (curAttackCount > attackCount)
             {
-                
-                StartCoroutine("IeDelay");
+                //StopCoroutine(IeDelay());
+                //StartCoroutine(IeDelay());
             }
 
             if (!player.isAttack) { 
@@ -57,17 +57,14 @@ public class JH_PlayerAttack : MonoBehaviour
 
                 //콤보 공격을 한다.
                 player.anim.SetTrigger("doCombo");
-
                 // 소리 재생
                 swingSound.Play();
-
+                // 검기 생성
                 GameObject swordAura = Instantiate(swordAuraFactory);
-                // 검기의 위치를 플레이어의 위치로 지정한다.
                 swordAura.transform.position = transform.position;
 
                 if(sceneName == "Tutorial")
                 {
-                    print("!!!!!11111111");
                     swordAura.transform.forward = -transform.forward;
                 }
                 else
@@ -86,5 +83,4 @@ public class JH_PlayerAttack : MonoBehaviour
         curAttackCount = 0;
         player.isAttack = false;
     }
-
 }

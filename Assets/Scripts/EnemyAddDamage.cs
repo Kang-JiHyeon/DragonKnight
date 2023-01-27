@@ -26,7 +26,7 @@ public class EnemyAddDamage : MonoBehaviour
         if (other.gameObject.name.Contains("Player"))
         {
             
-            JH_PlayerHP.Instance.addDamage();
+            JH_PlayerHP.Instance.HP--;
             
             
         }

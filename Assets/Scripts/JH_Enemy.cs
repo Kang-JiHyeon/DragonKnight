@@ -26,7 +26,7 @@ public class JH_Enemy : MonoBehaviour
         {
             if (!JH_PlayerHP.Instance.isDamage)
             {
-                JH_PlayerHP.Instance.addDamage();
+                JH_PlayerHP.Instance.HP--;
             }
         }
 
